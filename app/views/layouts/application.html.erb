@@ -20,6 +20,17 @@
 
   <body>
     <%= render "layouts/nav" %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <% if user_signed_in? %>
+      <p class='welcome-message'> Welcome, <%= current_user.username %>!</p>
+        <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: 'auth-button' %>
+      <% else %>
+        <%= button_to "Sign In", user_session_path, class: 'auth-button' %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
