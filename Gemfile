@@ -36,7 +36,7 @@ gem "bootsnap", require: false
 
 # bootstrap and sass engine
 gem 'bootstrap', '~> 5.2', '>= 5.2.3'
-gem 'dartsass-sprockets'
+gem 'sassc-rails'
 
 
 group :development, :test do
