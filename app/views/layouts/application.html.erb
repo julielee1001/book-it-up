@@ -24,13 +24,14 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <% if user_signed_in? %>
-      <p class='welcome-message'> <%= current_user.username %></p>
-        <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: 'auth-button' %>
-      <% else %>
-        <%= button_to "Sign In", user_session_path, class: 'auth-button' %>
-    <% end %>
-
+    <div class='user-status'>
+      <% if user_signed_in? %>
+        <p class='welcome-message'> <%= current_user.username %></p>
+          <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: 'auth-button' %>
+        <% else %>
+          <%= button_to "Sign In", user_session_path, class: 'auth-button' %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>

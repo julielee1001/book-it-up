@@ -15,7 +15,7 @@ class ListsController < ApplicationController
   end 
 
   def create
-    @list = List.new(list_params)
+    @list = current_user.lists.new(list_params)
     @list.status = :personal
 
     if @list.save
@@ -25,12 +25,13 @@ class ListsController < ApplicationController
     end
 
     def edit
-      @list = List.find(params[:id])
+      @list = current_user.lists.find(params[:id])
+      puts "Edit List: #{@list.inspect}"
     end 
 
     def update
-      @list = List.find(params[:id])
-
+      @list = current_user.lists.find(params[:id])
+      
       if @list.update(list_params)
           redirect_to @list
       else
@@ -42,7 +43,7 @@ class ListsController < ApplicationController
       @list = List.find(params[:id])
       @list.destroy
 
-      redirect_to root_path, status: :see_other
+      redirect_to lists_path, status: :see_other
     end
 
   end

@@ -10,10 +10,10 @@ class User < ApplicationRecord
   
   has_many :lists
 
+# creating the default lists but not working rn
   after_create :create_default_lists
 
   private
-  # creating the default lists 
   def create_default_lists
     lists.create(name: "Favorites", status: :default)
     lists.create(name: "Wishlist", status: :default)
