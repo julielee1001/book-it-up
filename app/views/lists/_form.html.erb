@@ -1,24 +1,26 @@
-<%= form_with model: list do |form| %>
+<% if @list.present? %>
+    <%= form_with model: @list do |form| %>
 
         <div>
-          <%= form.label :name %><br>
-          <%= form.text_field :name %>
-          <% list.errors.full_messages_for(:title).each do |message| %>
+            <%= form.label :name %><br>
+            <%= form.text_field :name %>
+            <% @list.errors.full_messages_for(:name).each do |message| %>
             <div><%= message %></div>
-          <% end %>
+            <% end %>
         </div>
-      
+        
         <div>
-          <%= form.label :description %><br>
-          <%= form.text_area :description %><br>
-          <% list.errors.full_messages_for(:body).each do |message| %>
+            <%= form.label :description %><br>
+            <%= form.text_area :description %><br>
+            <% @list.errors.full_messages_for(:description).each do |message| %>
             <div><%= message %></div>
-          <% end %>
+            <% end %>
         </div>
-  
-        <br>
-  
+
         <div>
-          <%= form.submit %>
+            <%= form.submit %>
         </div>
-      <% end %>
+    <% end %>
+<% else %>    
+    <p>There was an error loading the list.</p>
+<% end %>
