@@ -1,5 +1,6 @@
 class List < ApplicationRecord
   belongs_to :user
+  has_and_belongs_to_many :books
   
   enum status: { default: 0, personal: 1 }
   
