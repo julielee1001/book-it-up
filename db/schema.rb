@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_06_182832) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_09_021150) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "book_lists", force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.bigint "list_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_lists_on_book_id"
+    t.index ["list_id"], name: "index_book_lists_on_list_id"
+  end
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -21,7 +30,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_06_182832) do
     t.string "cover_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "google_id", uniqueness: true
+    t.string "google_id"
   end
 
   create_table "lists", force: :cascade do |t|
@@ -55,5 +64,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_06_182832) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "book_lists", "books"
+  add_foreign_key "book_lists", "lists"
   add_foreign_key "lists", "users"
 end

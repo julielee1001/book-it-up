@@ -1,4 +1,5 @@
 <h1> Search For a Book</h1>
+<p>Search for a book and then save it onto the catalog to add it onto a list!</p>
 
 <%= form_with url: new_book_path, method: :get, local: true do %>
     <div>
@@ -6,6 +7,7 @@
       <%= text_field_tag :search, params[:search] %>
     </div>
     <div>
+    <br>
       <%= submit_tag "Search" %>
     </div>
   <% end %>
@@ -19,7 +21,9 @@
         <li>
         <strong>Title:</strong> 
         <%= link_to book.dig('volumeInfo', 'title') || "N/A", 
-            book_path(id: book['id'], cover_url: book.dig('volumeInfo', 'imageLinks', 'thumbnail'),
+          book_path(
+            id: book['id'], 
+            cover_url: book.dig('volumeInfo', 'imageLinks', 'thumbnail'),
             title: book.dig('volumeInfo', 'title'), 
             author: (book.dig('volumeInfo', 'authors') || []).join(', '), 
             description: book.dig('volumeInfo', 'description')) %>

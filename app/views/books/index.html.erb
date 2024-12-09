@@ -13,6 +13,13 @@
         <strong>Title:</strong> <%= book.title %><br>
         <strong>Author:</strong> <%= book.author %><br>
         <strong>Description:</strong> <%= book.description %><br>
+
+        <%= form_with url: add_to_list_book_path(book), method: :post, local: true do %>
+          <%= label_tag :list_id, "Select List:" %>
+          <%= select_tag :list_id, options_from_collection_for_select(@lists, :id, :name), prompt: "Select a list" %>
+          <%= submit_tag "Add to List" %>
+        <% end %>
+
         <%= link_to "Delete Book Off Catalog", book_path(book), method: :delete, data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"

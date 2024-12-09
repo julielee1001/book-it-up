@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :lists
-  resources :books
+  resources :books do
+    post 'add_to_list', on: :member
+  end
 
 end

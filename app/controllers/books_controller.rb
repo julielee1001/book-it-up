@@ -1,77 +1,89 @@
 class BooksController < ApplicationController
-    def index
-        @books = Book.order(created_at: :desc)
-    end
+  def index
+    @books = Book.order(created_at: :desc)
+    @lists = current_user.lists
+  end
 
-    def new
-        require 'httparty'
-    
-        if params[:search].present?
+  def new
+    require 'httparty'
 
-          api_key = Rails.application.credentials.google_books_api_key
-          url = "https://www.googleapis.com/books/v1/volumes?q=#{params[:search]}&maxResults=10&key=#{api_key}"
-          response = HTTParty.get(url)
-    
-          if response.success?
+    if params[:search].present?
 
-            @results = response.parsed_response['items'] || []
-            flash[:message] = "No books found" if @results.empty?
+      api_key = Rails.application.credentials.google_books_api_key
+      url = "https://www.googleapis.com/books/v1/volumes?q=#{params[:search]}&maxResults=10&key=#{api_key}"
+      response = HTTParty.get(url)
 
-            else
-            flash[:message] = "There was a problem with the Google Books API."
-            @results = []
-          end
+      if response.success?
+
+        @results = response.parsed_response['items'] || []
+        flash[:message] = "No books found" if @results.empty?
 
         else
-          @results = []
-
-        end
-    end
-
-    def create
-        @book = Book.find_or_initialize_by(google_id: params[:google_id])
-      
-        if @book.new_record?
-          @book.assign_attributes(
-            title: params[:title],
-            author: params[:author],
-            description: params[:description],
-            cover_url: params[:cover_url]
-          )
-        end
-      
-        if @book.save
-          redirect_to books_path, notice: "Book successfully saved!"
-        else
-          redirect_to books_path, alert: "Book could not be saved."
-        end
-    end
-
-    def show
-        @book = {
-            google_id: params[:id],
-            title: params[:title],
-            author: params[:author],
-            description: params[:description],
-            cover_url: params[:cover_url]
-        }
-
-        if @book.nil?
-          redirect_to books_path, alert: "Book not found."
-        end      
-    end
-
-    def destroy
-        @book = Book.find(params[:id])
-        @book.destroy
-        redirect_to books_path, notice: 'Book successfully deleted.'
+        flash[:message] = "There was a problem with the Google Books API."
+        @results = []
       end
 
-    private
+    else
+      @results = []
 
-    def book_params
-        params.require(:book).permit(:author, :title, :description, :cover_url)
-      end
+    end
+  end
 
+  def create
+    @book = Book.find_or_initialize_by(google_id: params[:google_id])
+  
+    if @book.new_record?
+      @book.assign_attributes(
+        title: params[:title],
+        author: params[:author],
+        description: params[:description],
+        cover_url: params[:cover_url]
+      )
+    end
+  
+    if @book.save
+      redirect_to books_path, notice: "Book successfully saved!"
+    else
+      redirect_to books_path, alert: "Book could not be saved."
+    end
+  end 
+  
+  def show
+    @book = Book.find_by(google_id: params[:id])
+  
+    if @book.nil?
+      @book = {
+        google_id: params[:id],
+        title: params[:title],
+        author: params[:author],
+        description: params[:description],
+        cover_url: params[:cover_url]
+      }
+    end
+  end
+
+  def add_to_list
+    @book = Book.find(params[:id])
+    @list = List.find(params[:list_id])
+  
+    if @book.lists.include?(@list)
+      redirect_to books_path, notice: 'Book is already in this list.'
+    else
+      @book.lists << @list
+      redirect_to books_path, notice: 'Book added to the list.'
+    end
+  end
+
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to books_path, notice: 'Book successfully deleted.'
+  end
+
+  private
+
+  def book_params
+    params.require(:book).permit(:author, :title, :description, :cover_url)
+  end
 
 end
