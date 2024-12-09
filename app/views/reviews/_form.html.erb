@@ -1,4 +1,4 @@
-<%= form_with model: @review, url: book_reviews_path(@book), local: true do |form| %>
+<%= form_with model: [@book, @review], local: true do |form| %>
     <div>
       <%= form.label :content, 'Your Review:' %>
       <br>
@@ -13,4 +13,5 @@
     </div>
   <% end %>
       <br>
-  <%= link_to 'Back to Book Catalog', books_path %>
+<%= link_to 'Back to All My Reviews', reviews_my_reviews_path %> |
+<%= link_to 'Back to Book Catalog', books_path %>

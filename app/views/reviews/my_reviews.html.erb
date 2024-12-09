@@ -1,0 +1,11 @@
+<h1>Your Reviews</h1>
+
+<% if @reviews.any? %>
+  <% @reviews.each do |review| %>
+    <p><strong>Review for <%= review.book.title %>:</strong> <%= review.content %></p>
+    <%= link_to 'View Review', book_review_path(review.book, review) %>
+    <hr>
+  <% end %>
+<% else %>
+  <p>You haven't written any reviews yet.</p>
+<% end %>

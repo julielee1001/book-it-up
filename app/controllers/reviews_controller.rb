@@ -1,6 +1,24 @@
 class ReviewsController < ApplicationController
     before_action :authenticate_user!
-  
+
+    def index
+        @book = Book.find_by(id: params[:book_id])
+        if @book.nil?
+            redirect_to books_path, alert: "Book not found"
+        else
+            if params[:user_id].present? && params[:user_id] == current_user.id.to_s
+            @reviews = current_user.reviews
+            else
+            @reviews = @book.reviews
+            end
+        end
+    end
+
+    def show 
+        @book = Book.find_by(id: params[:book_id])
+        @review = @book.reviews.find(params[:id])
+    end 
+
     def new
       @book = Book.find_by(id: params[:book_id])
       if @book.nil?
@@ -26,27 +44,35 @@ class ReviewsController < ApplicationController
       end
     end
   
-    def index
-      @book = Book.find_by(id: params[:book_id])
-      if @book.nil?
-        redirect_to books_path, alert: "Book not found"
-      else
-        if params[:user_id].present? && params[:user_id] == current_user.id.to_s
-          @reviews = current_user.reviews
-        else
-          @reviews = @book.reviews
-        end
-      end
-    end
-
     def edit 
+        @book = Book.find(params[:book_id])
+        @review = @book.reviews.find(params[:id])
     end
 
     def update 
+        @book = Book.find(params[:book_id])
+        @review = @book.reviews.find(params[:id])
+
+        if @review.update(review_params)
+            redirect_to book_reviews_path(@book), notice: 'Review successfully updated.'
+        else
+            render :edit, status: :unprocessable_entity
+        end
     end
 
-    def 
-  
+    def destroy
+        @book = Book.find(params[:book_id])
+        @review = @book.reviews.find(params[:id])
+        @review.destroy
+        
+        redirect_to book_reviews_path(@book), notice: 'Review deleted successfully.', status: :see_other
+    end 
+    
+    def my_reviews
+        @reviews = current_user.reviews
+        @reviews = Review.order(created_at: :desc)
+    end
+
     private
   
     def review_params

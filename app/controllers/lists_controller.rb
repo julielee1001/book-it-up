@@ -26,7 +26,6 @@ class ListsController < ApplicationController
 
     def edit
       @list = current_user.lists.find(params[:id])
-      puts "Edit List: #{@list.inspect}"
     end 
 
     def update
