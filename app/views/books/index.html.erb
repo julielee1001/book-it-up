@@ -14,6 +14,8 @@
         <strong>Author:</strong> <%= book.author %><br>
         <strong>Description:</strong> <%= book.description %><br>
 
+        <%= link_to 'Add a Review', new_book_review_path(book) %>
+        
         <%= form_with url: add_to_list_book_path(book), method: :post, local: true do %>
           <%= label_tag :list_id, "Select List:" %>
           <%= select_tag :list_id, options_from_collection_for_select(@lists, :id, :name), prompt: "Select a list" %>
