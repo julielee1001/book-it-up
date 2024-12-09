@@ -1,0 +1,26 @@
+<h1>All Added Books</h1>
+
+<% if @books.present? %>
+  <ul>
+    <% @books.each do |book| %>
+      <li>
+        <% if book.cover_url.present? %>
+          <img src="<%= book.cover_url %>" alt="<%= book.title %> Cover" width="100">
+        <% else %>
+          <p>No cover image available.</p>
+        <% end %>
+        <br>
+        <strong>Title:</strong> <%= book.title %><br>
+        <strong>Author:</strong> <%= book.author %><br>
+        <strong>Description:</strong> <%= book.description %><br>
+        <%= link_to "Delete Book Off Catalog", book_path(book), method: :delete, data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                    } %>
+        <hr>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No saved books found.</p>
+<% end %>

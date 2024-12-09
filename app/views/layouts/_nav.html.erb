@@ -1,35 +1,37 @@
 <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand">Book It Up</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Home
+          <%= link_to "Home", root_path, :class => "nav-link" %>
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <%= link_to "Search", new_book_path, :class => "nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <%= link_to "My Lists", lists_path, :class => "nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <%= link_to "Book Catalog", books_path, :class => "nav-link" %>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
+            <% if !current_user %>
+                <li><%= link_to "Sign Up" , new_user_registration_path, :class => "nav-link" %></li>
+                <li><%= link_to "Sign In" , new_user_session_path, :class => "nav-link" %></li>
+            <% else %>
+                 <li class="dropdown">
+                        <li><%= link_to "Edit My Profile", edit_user_registration_path, :class => "nav-link" %></li>
+                        <li><%= link_to "Sign Out" , destroy_user_session_path, :class => "nav-link" %></li>
+                    </ul>
+                </li>
+            </ul>
+            <% end %>
           </div>
-        </li>
       </ul>
     </div>
   </div>
