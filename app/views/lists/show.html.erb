@@ -3,6 +3,19 @@
 <p> <%= @list.description %> </p>
 <p>Books In "<%= @list.name %>"</p>
 
+<% if @list.books.any? %>
+  <ul>
+    <% @list.books.each do |book| %>
+      <li>
+        <strong>Title:</strong> <%= book.title %><br>
+        <strong>Author:</strong> <%= book.author %><br>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No books in this list yet.</p>
+<% end %>
+
 <ul>
     <li><%= link_to "Edit List", edit_list_path(@list) %></li>
     <li><%= link_to "Destroy List", list_path(@list), data: {
@@ -11,3 +24,5 @@
                     } %></li>
 
 </ul>
+
+<%= link_to "Back to Lists", lists_path %>
