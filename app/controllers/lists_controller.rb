@@ -23,6 +23,7 @@ class ListsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
 
     def edit
       @list = current_user.lists.find(params[:id])
@@ -44,8 +45,6 @@ class ListsController < ApplicationController
 
       redirect_to lists_path, status: :see_other
     end
-
-  end
 
   private
     def list_params
