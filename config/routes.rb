@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :lists
+  resources :books
+
 end

@@ -1,0 +1,33 @@
+<h1> Search For a Book</h1>
+
+<%= form_with url: new_book_path, method: :get, local: true do %>
+    <div>
+      <%= label_tag :search, "Search By Title or Author:" %>
+      <%= text_field_tag :search, params[:search] %>
+    </div>
+    <div>
+      <%= submit_tag "Search" %>
+    </div>
+  <% end %>
+  
+  <% if @results.present? %>
+
+    <h2>Search Results</h2>
+
+    <ul>
+      <% @results.each do |book| %>
+        <li>
+        <strong>Title:</strong> 
+        <%= link_to book.dig('volumeInfo', 'title') || "N/A", 
+            book_path(id: book['id'], cover_url: book.dig('volumeInfo', 'imageLinks', 'thumbnail'),
+            title: book.dig('volumeInfo', 'title'), 
+            author: (book.dig('volumeInfo', 'authors') || []).join(', '), 
+            description: book.dig('volumeInfo', 'description')) %>
+        <br>
+        <strong>Authors:</strong> <%= (book.dig('volumeInfo', 'authors') || []).join(', ') %><br>
+        </li>
+        <br>
+      <% end %>
+    </ul>
+
+  <% end %>

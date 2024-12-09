@@ -1,0 +1,21 @@
+<% if @book[:cover_url] %>
+  <p><img src="<%= @book[:cover_url] %>" alt="<%= @book[:title] %> Cover"></p>
+<% else %>
+  <p>No cover image available.</p>
+<% end %>
+
+<h1><%= @book[:title] %></h1>
+<p><strong>Authors:</strong> <%= @book[:author] %></p>
+<p><strong>Description:</strong> <%= @book[:description] %></p>
+
+<%= form_with url: books_path, method: :post, local: true do %>
+  <%= hidden_field_tag :cover_url, @book[:cover_url] %>
+  <%= hidden_field_tag :title, @book[:title] %>
+  <%= hidden_field_tag :author, @book[:author] %>
+  <%= hidden_field_tag :description, @book[:description] %>
+  <%= hidden_field_tag :google_id, @book[:google_id] %>
+  
+  <%= submit_tag "Save this Book" %>
+<% end %>
+
+<%= link_to "Back to Search", new_book_path %>
