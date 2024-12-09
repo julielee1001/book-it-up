@@ -1,11 +1,11 @@
-<h2>Reviews</h2>
+<h1>Reviews for <%= @book.title %></h1>
 
-<% if @reviews.any? %>
-  <% @reviews.each do |review| %>
-    <p><strong>Book:</strong> <%= review.book.title %><br>
-       <strong>Review:</strong> <%= review.content %></p>
-    <hr>
-  <% end %>
-<% else %>
-  <p>No reviews found.</p>
+<% @book.reviews.each do |review| %>
+  <p><strong>Review by <%= review.user.username %>:</strong> <%= review.content %></p>
+  <%= link_to 'View Review', book_review_path(review.book, review) %>
+  <hr>
 <% end %>
+
+<%= link_to 'Add a Review', new_book_review_path(@book) %> |
+<%= link_to 'Back to All My Reviews', reviews_my_reviews_path %> |
+<%= link_to 'Back to Book Catalog', books_path(@book) %>

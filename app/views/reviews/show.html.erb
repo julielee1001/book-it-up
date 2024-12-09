@@ -1,0 +1,15 @@
+<h1>Review for <%= @book.title %></h1>
+
+<p><strong>Review:</strong> <%= @review.content %></p>
+
+<ul>
+    <li><%= link_to "Edit Review", edit_book_review_path(@book, @review) %></li>
+    <li><%= link_to "Destroy Review", book_review_path(@book, @review), method: :delete, data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                    } %></li>
+
+</ul>
+
+<%= link_to 'Back to All My Reviews', reviews_my_reviews_path %> |
+<%= link_to 'Back to Book Catalog', books_path(@book) %>

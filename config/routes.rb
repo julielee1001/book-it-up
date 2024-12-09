@@ -23,4 +23,6 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
+  get 'reviews/my_reviews', to: 'reviews#my_reviews', as: 'reviews_my_reviews'
+
 end
