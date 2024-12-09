@@ -1,0 +1,16 @@
+<%= form_with model: @review, url: book_reviews_path(@book), local: true do |form| %>
+    <div>
+      <%= form.label :content, 'Your Review:' %>
+      <br>
+      <br>
+      <%= form.text_area :content %>
+      
+    </div>
+    <br>
+    <br>
+    <div>
+      <%= form.submit 'Submit Review' %>
+    </div>
+  <% end %>
+      <br>
+  <%= link_to 'Back to Book Catalog', books_path %>

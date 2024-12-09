@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :lists
   resources :books do
     post 'add_to_list', on: :member
+    resources :reviews
   end
 
 end
