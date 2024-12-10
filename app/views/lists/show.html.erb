@@ -3,8 +3,9 @@
     <br>
     <br>
     <%= button_to "Remove Picture", purge_picture_list_path(@list), method: :delete, data: 
-    { confirm: "Are you sure you want to remove the picture?" }, class: "btn btn-danger btn-sm" %>
+    { confirm: "Are you sure you want to remove the picture?" }, class: "btn btn-secondary btn-sm" %>
 <% end %>
+<br>
 <h1> <%= @list.name %></h1>
 <br>
 
@@ -29,16 +30,19 @@
     <% end %>
   </ul>
 <% else %>
-  <p>No books in this list yet.</p>
+  <p>No books in this list yet!</p>
 <% end %>
 
+<%= link_to "Add More Books!", books_path, class:'btn btn-primary' %>
 
-<%= link_to "Edit List", edit_list_path(@list), class:'btn btn-primary' %>
-<%= link_to "Destroy List", list_path(@list), class:'btn btn-danger', data: {
+<hr>
+
+<%= link_to "Edit List", edit_list_path(@list), class:'btn btn-primary btn-sm' %>
+<%= link_to "Destroy List", list_path(@list), class:'btn btn-danger btn-sm', data: {
                 turbo_method: :delete,
                 turbo_confirm: "Are you sure?"
                 } %>
 
 <br><br>
 
-<%= link_to "Back to Lists", lists_path, class:'btn btn-primary' %>
+<%= link_to "Back to My Lists", lists_path, class:'btn btn-primary' %>

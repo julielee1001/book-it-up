@@ -19,7 +19,8 @@
 
         <div>
             <%= form.label :picture, "Add a cover photo!" %> <br>
-            <%= form.file_field :picture %>
+            <%= form.file_field :picture, :class =>"form-control" %>
+            <br>
         </div>
 
             <%= form.submit "Submit", :class=> 'btn btn-primary' %>

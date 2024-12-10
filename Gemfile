@@ -37,7 +37,7 @@ gem "bootsnap", require: false
 # bootstrap and sass engine
 gem 'bootstrap', '~> 5.2', '>= 5.2.3'
 gem 'sassc-rails'
-gem 'bootstrap-sass-extras'
+# gem 'bootstrap-sass-extras'
 gem "devise", "~> 4.9"
 
 gem 'httparty'

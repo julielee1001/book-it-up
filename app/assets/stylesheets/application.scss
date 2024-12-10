@@ -13,20 +13,15 @@
  */
  
 @import "bootstrap";
+@import "home";
+@import "devise";
 
 .container {
     text-align: center !important;
-    align-content: center; 
+    background-color: rgb(232, 243, 255);
+    padding:20px;
 }
 
-.container ul {
-    list-style-type: none !important;
-}
-
-body .container{
-    background-color: rgb(229, 208, 155) !important;
-}
-
-img {
-    text-align: center !important;
+body {
+    background-color: white;
 }
