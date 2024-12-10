@@ -1,14 +1,14 @@
 <h1>Review for <%= @book.title %></h1>
 
-<p><strong>Review:</strong> <%= @review.content %></p>
+<p>Review by <strong> <%= @review.user.username %>:</strong> <%= @review.content %></p>
 
-
-<%= link_to "Edit Review", edit_book_review_path(@book, @review), class:"btn btn-primary" %>
-<%= link_to "Destroy Review", book_review_path(@book, @review), class:"btn btn-danger", method: :delete, data: {
-            turbo_method: :delete,
-            turbo_confirm: "Are you sure?"
-            } %>
-
+<% if current_user.id == @review.user.id %>
+    <%= link_to "Edit Review", edit_book_review_path(@book, @review), class:"btn btn-primary" %>
+    <%= link_to "Destroy Review", book_review_path(@book, @review), class:"btn btn-danger", method: :delete, data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+                } %>
+<% end %>
 <br><br>
 
 <hr>
