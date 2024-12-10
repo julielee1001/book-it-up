@@ -1,7 +1,7 @@
 <div class='user-status'>
     <% if user_signed_in? %>
-        <p>Welcome back, <%= current_user.first_name %>!</p>
-        <p>You are logged in as <%= current_user.username %></p>
+        <p>Welcome back, <strong><%= current_user.first_name %>!</strong></p>
+        <p>You are logged in as <strong><%= current_user.username %></strong></p>
     <% end %>
 </div>
 
@@ -12,16 +12,23 @@
     <br>
 
     <img src="https://miro.medium.com/v2/resize:fit:1200/1*6Jp3vJWe7VFlFHZ9WhSJng.jpeg", class="home-photo">
+    <br>
+    <hr>
 
-    <br><br>
-    <% if user_signed_in? %>
-        <h2 class="text-body-secondary">What to do, what to do~ </h2>
-        <p> Check out <%= link_to "My Lists", lists_path %> or the <%= link_to "Book Catalog", books_path %>! </p>
-        <p> <%= link_to "Search", new_book_path %> for books and <%= link_to "Create New Lists", new_list_path %> to share with family and friends!</p>
-    <% else %>
-        <p>Welcome! Please <%= link_to "sign up" , new_user_registration_path %> or
-        <%= link_to "sign in" , new_user_session_path%> to get started! </p>
-    <% end %>
+    <figure class="text-center">
+        <blockquote class="blockquote">
+            <% if user_signed_in? %>
+                <h2 class="text-body-secondary">What to do, what to do~ </h2>
+                <p class="mb-0"> Check out <%= link_to "My Lists", lists_path %> or the <%= link_to "Book Catalog", books_path %>! </p>
+                <p class="mb-0"> <%= link_to "Search", new_book_path %> for books and <%= link_to "Create New Lists", new_list_path %> to share with family and friends!</p>
+            <% else %>
+                <p class="mb-0">Welcome! Please <%= link_to "sign up" , new_user_registration_path %> or
+                <%= link_to "sign in" , new_user_session_path%> to get started! </p>
+            <% end %>
+        </blockquote>
+    </figure>
+
+    
 <hr>
 <br>
 
