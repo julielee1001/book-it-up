@@ -1,11 +1,14 @@
-<h1>Your Reviews</h1>
+<h1>My Reviews</h1>
+<hr>
 
 <% if @reviews.any? %>
-  <% @reviews.each do |review| %>
-    <p><strong>Review for <%= review.book.title %>:</strong> <%= review.content %></p>
-    <%= link_to 'View Review', book_review_path(review.book, review) %>
-    <hr>
-  <% end %>
-<% else %>
-  <p>You haven't written any reviews yet.</p>
+    <% @reviews.each do |review| %>
+        <% if review.user_id === current_user.id %>
+            <p><strong>Review for <%= review.book.title %>:</strong> <%= review.content %></p>
+            <%= link_to 'View Review Details', book_review_path(review.book, review) %>
+            <hr>
+        <% end %>
+    <% end %>
 <% end %>
+
+<%= link_to "Find a Book to Review!", books_path, class:"btn btn-primary" %>

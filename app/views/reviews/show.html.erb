@@ -2,14 +2,16 @@
 
 <p><strong>Review:</strong> <%= @review.content %></p>
 
-<ul>
-    <li><%= link_to "Edit Review", edit_book_review_path(@book, @review) %></li>
-    <li><%= link_to "Destroy Review", book_review_path(@book, @review), method: :delete, data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                    } %></li>
 
-</ul>
+<%= link_to "Edit Review", edit_book_review_path(@book, @review), class:"btn btn-primary" %>
+<%= link_to "Destroy Review", book_review_path(@book, @review), class:"btn btn-danger", method: :delete, data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+            } %>
 
-<%= link_to 'Back to All My Reviews', reviews_my_reviews_path %> |
-<%= link_to 'Back to Book Catalog', books_path(@book) %>
+<br><br>
+
+<hr>
+<br>
+<%= link_to 'Back to All My Reviews', reviews_my_reviews_path, class:"btn btn-primary" %>
+<%= link_to 'Back to Book Catalog', books_path(@book), class:"btn btn-primary" %>

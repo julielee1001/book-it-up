@@ -1,24 +1,31 @@
-<h1> Search For a Book</h1>
+<h1> Search For a Book 🔎</h1>
 <p>Search for a book and then save it onto the catalog to add it onto a list!</p>
 
 <%= form_with url: new_book_path, method: :get, local: true do %>
     <div>
       <%= label_tag :search, "Search By Title or Author:" %>
-      <%= text_field_tag :search, params[:search] %>
+      <%= text_field_tag :search, params[:search], class:"form-control" %>
     </div>
     <div>
     <br>
-      <%= submit_tag "Search" %>
+      <%= submit_tag "Search", class:"btn btn-primary" %>
     </div>
   <% end %>
-  
+
+  <br>
+  <br>
+
+  <% if !@results.present? %>
+    <h3>Results will appear here!!</h3>
+  <% end %>
+
   <% if @results.present? %>
 
     <h2>Search Results</h2>
-
-    <ul>
+    <hr>
       <% @results.each do |book| %>
-        <li>
+        <img src="<%= book.dig('volumeInfo', 'imageLinks', 'thumbnail')%>">
+        <br>
         <strong>Title:</strong> 
         <%= link_to book.dig('volumeInfo', 'title') || "N/A", 
           book_path(
@@ -29,9 +36,7 @@
             description: book.dig('volumeInfo', 'description')) %>
         <br>
         <strong>Authors:</strong> <%= (book.dig('volumeInfo', 'authors') || []).join(', ') %><br>
-        </li>
-        <br>
+        <hr>
       <% end %>
-    </ul>
 
   <% end %>

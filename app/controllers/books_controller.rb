@@ -11,7 +11,7 @@ class BooksController < ApplicationController
     if params[:search].present?
 
       api_key = Rails.application.credentials.google_books_api_key
-      url = "https://www.googleapis.com/books/v1/volumes?q=#{params[:search]}&maxResults=10&key=#{api_key}"
+      url = "https://www.googleapis.com/books/v1/volumes?q=#{params[:search]}&maxResults=15&key=#{api_key}"
       response = HTTParty.get(url)
 
       if response.success?
@@ -61,6 +61,11 @@ class BooksController < ApplicationController
         cover_url: params[:cover_url]
       }
     end
+  end
+
+  def show_all 
+    @book = Book.find(params[:id])
+    @lists = current_user.lists
   end
 
   def add_to_list

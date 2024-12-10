@@ -1,33 +1,33 @@
-<h1>All Added Books</h1>
+<h1>All Books Added By the Community</h1>
 
 <% if @books.present? %>
   <ul>
-    <% @books.each do |book| %>
-      <li>
-        <% if book.cover_url.present? %>
-          <img src="<%= book.cover_url %>" alt="<%= book.title %> Cover" width="100">
-        <% else %>
-          <p>No cover image available.</p>
-        <% end %>
-        <br>
-        <strong>Title:</strong> <%= book.title %><br>
-        <strong>Author:</strong> <%= book.author %><br>
-        <strong>Description:</strong> <%= book.description %><br>
+      <% @books.each do |book| %>
 
-        <%= link_to 'Add a Review', new_book_review_path(book) %>
-        
-        <%= form_with url: add_to_list_book_path(book), method: :post, local: true do %>
-          <%= label_tag :list_id, "Select List:" %>
-          <%= select_tag :list_id, options_from_collection_for_select(@lists, :id, :name), prompt: "Select a list" %>
-          <%= submit_tag "Add to List" %>
-        <% end %>
+          <% if book.cover_url.present? %>
+            <img src="<%= book.cover_url %>" alt="<%= book.title %> Cover" width="150px">
+          <% else %>
+            <p>No cover image available.</p>
+          <% end %>
+          <br>
+          <strong>Title:</strong> <%= book.title %><br>
+          <strong>Author:</strong> <%= book.author %><br>
+          <strong>Description:</strong> <%= book.description %><br>
+          <br>
+          <%= link_to 'View Reviews', book_reviews_path(book), class:"btn btn-warning" %> 
+          <%= link_to 'Add a Review', new_book_review_path(book), class:"btn btn-warning" %>
 
-        <%= link_to "Delete Book Off Catalog", book_path(book), method: :delete, data: {
+          <br><br>
+
+          <%= link_to "View Book Details", show_all_book_path(book), class:"btn btn-primary" %>
+          <br>
+          <br>
+        <%= link_to "Delete Book Off Catalog", book_path(book), class:"btn btn-danger", method: :delete, data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                     } %>
         <hr>
-      </li>
+    
     <% end %>
   </ul>
 <% else %>

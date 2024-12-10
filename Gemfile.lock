@@ -87,6 +87,8 @@ GEM
     bootstrap (5.3.3)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.11.8, < 3)
+    bootstrap-sass-extras (0.1.0)
+      rails (>= 3.1.0)
     brakeman (6.2.2)
       racc
     builder (3.3.0)
@@ -335,6 +337,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   bootstrap (~> 5.2, >= 5.2.3)
+  bootstrap-sass-extras
   brakeman
   capybara
   debug

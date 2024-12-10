@@ -15,7 +15,7 @@
   <%= hidden_field_tag :description, @book[:description] %>
   <%= hidden_field_tag :google_id, @book[:google_id] %>
   
-  <%= submit_tag "Save this Book" %>
+  <%= submit_tag "Save this Book", :class =>"btn btn-primary" %>
 <% end %>
-
-<%= link_to "Back to Search", new_book_path %>
+<br>
+<%= link_to "Back to Search", new_book_path, class:"btn btn-primary" %>
