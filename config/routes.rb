@@ -17,10 +17,18 @@ Rails.application.routes.draw do
   
   root "home#index"
 
-  resources :lists
+  resources :lists do
+    member do
+      delete 'remove_book_from_list/:book_id', to: 'lists#remove_book_from_list', as: 'remove_book_from_list'
+    end
+  end
+
   resources :books do
     post 'add_to_list', on: :member
     resources :reviews
+    member do
+      get 'show_all', to: 'books#show_all'
+    end
   end
 
   get 'reviews/my_reviews', to: 'reviews#my_reviews', as: 'reviews_my_reviews'

@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
     before_action :authenticate_user!
+    before_action :authorize_review_owner, only: [:edit, :update, :destroy]
 
     def index
         @book = Book.find_by(id: params[:book_id])
@@ -29,20 +30,20 @@ class ReviewsController < ApplicationController
     end
   
     def create
-      @book = Book.find_by(id: params[:book_id])
-      if @book.nil?
-        redirect_to books_path, alert: "Book not found"
-      else
-        @review = @book.reviews.build(review_params)
-        @review.user = current_user
-  
-        if @review.save
-          redirect_to book_reviews_path(@book), notice: 'Review added successfully.'
+        @book = Book.find_by(id: params[:book_id])
+        if @book.nil?
+          redirect_to books_path, alert: "Book not found"
         else
-          render :new, status: :unprocessable_entity
+          @review = @book.reviews.build(review_params)
+          @review.user = current_user
+    
+          if @review.save
+            redirect_to book_reviews_path(@book), notice: 'Review added successfully.'
+          else
+            render :new, status: :unprocessable_entity
+          end
         end
       end
-    end
   
     def edit 
         @book = Book.find(params[:book_id])
@@ -71,6 +72,14 @@ class ReviewsController < ApplicationController
     def my_reviews
         @reviews = current_user.reviews
         @reviews = Review.order(created_at: :desc)
+    end
+
+    def authorize_review_owner
+        @book = Book.find(params[:book_id])
+        @review = @book.reviews.find(params[:id])
+        unless @review.user == current_user
+          redirect_to book_reviews_path(@book), notice: "You are not authorized to perform this action."
+        end
     end
 
     private

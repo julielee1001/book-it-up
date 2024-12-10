@@ -8,6 +8,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @books = @list.books
   end
 
   def new
@@ -44,6 +45,20 @@ class ListsController < ApplicationController
       @list.destroy
 
       redirect_to lists_path, status: :see_other
+    end
+
+    def remove_book_from_list
+      @list = List.find(params[:id])
+      @book = Book.find(params[:book_id])
+
+      @book_list = BookList.find_by(list_id: @list.id, book_id: @book.id)
+  
+      if @book_list
+        @book_list.destroy
+        redirect_to @list, notice: "Book removed from list."
+      else
+        redirect_to @list, alert: "This book is not associated with the list."
+      end
     end
 
   private

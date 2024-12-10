@@ -1,0 +1,24 @@
+<h1> <%= @book.title %> </h1>
+<img src="<%= @book.cover_url %>"
+<br>
+<p><strong>Author:</strong> <%= @book.author %></p>
+<p><strong>Description:</strong> <%= @book.description %></p>
+
+<%= link_to 'View Reviews', book_reviews_path(@book), class:"btn btn-primary" %> 
+<%= link_to 'Add a Review', new_book_review_path(@book), class:"btn btn-primary" %>
+
+<br><br>
+
+<%= form_with url: add_to_list_book_path(@book), method: :post, local: true do %>
+<%= label_tag :list_id, "Select List:" %>
+<%= select_tag :list_id, options_from_collection_for_select(@lists, :id, :name), class:"form-select", id:"exampleSelect1", 
+prompt: "Select a list" %>
+<br>
+<%= submit_tag "Add to List", class:"btn btn-primary" %>
+<% end %>
+
+<br>
+
+<%= link_to "Back to Catalog", books_path, class:"btn btn-primary" %>
+
+<br>

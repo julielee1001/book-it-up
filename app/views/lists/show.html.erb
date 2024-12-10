@@ -1,15 +1,22 @@
 <h1> <%= @list.name %></h1>
 
 <p> <%= @list.description %> </p>
-<p>Books In "<%= @list.name %>"</p>
+<hr>
 
 <% if @list.books.any? %>
-  <ul>
     <% @list.books.each do |book| %>
-      <li>
         <strong>Title:</strong> <%= book.title %><br>
         <strong>Author:</strong> <%= book.author %><br>
-      </li>
+        <img src="<%= book.cover_url %>", width="100px" <br>
+        <br><br>
+
+        <%= link_to "View Book Details", show_all_book_path(book), class:"btn btn-primary" %>
+        <br>
+        <br>
+        <%= button_to "Remove from List", remove_book_from_list_list_path(@list, book), class:'btn btn-danger', method: :delete, 
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this book from the list?" } %>
+
+        <br>
       <hr>
     <% end %>
   </ul>
@@ -17,13 +24,13 @@
   <p>No books in this list yet.</p>
 <% end %>
 
-<ul>
-    <li><%= link_to "Edit List", edit_list_path(@list) %></li>
-    <li><%= link_to "Destroy List", list_path(@list), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                    } %></li>
 
-</ul>
+<%= link_to "Edit List", edit_list_path(@list), class:'btn btn-primary' %>
+<%= link_to "Destroy List", list_path(@list), class:'btn btn-danger', data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+                } %>
 
-<%= link_to "Back to Lists", lists_path %>
+<br><br>
+
+<%= link_to "Back to Lists", lists_path, class:'btn btn-primary' %>

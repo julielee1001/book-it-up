@@ -3,23 +3,21 @@
 
         <div>
             <%= form.label :name %><br>
-            <%= form.text_field :name %>
+            <%= form.text_field :name, :class => "form-control" %>
             <% @list.errors.full_messages_for(:name).each do |message| %>
             <div><%= message %></div>
             <% end %>
         </div>
-        
+        <br>
         <div>
             <%= form.label :description %><br>
-            <%= form.text_area :description %><br>
+            <%= form.text_area :description, :class => "form-control" %><br>
             <% @list.errors.full_messages_for(:description).each do |message| %>
             <div><%= message %></div>
             <% end %>
         </div>
 
-        <div>
-            <%= form.submit %>
-        </div>
+            <%= form.submit "Submit", :class=> 'btn btn-primary' %>
     <% end %>
 <% else %>    
     <p>There was an error loading the list.</p>

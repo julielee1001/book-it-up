@@ -13,5 +13,21 @@
  */
  
 @import "bootstrap";
-@import "journal";
-@import "home";
+@import "~bootstrap/scss/bootstrap";
+
+.container {
+    text-align: center !important;
+    align-content: center; 
+}
+
+.container ul {
+    list-style-type: none !important;
+}
+
+body .container{
+    background-color: rgb(229, 208, 155) !important;
+}
+
+img {
+    text-align: center !important;
+}

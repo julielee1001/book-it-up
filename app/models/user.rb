@@ -11,7 +11,6 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :lists
 
-# creating the default lists but not working rn
   after_create :create_default_lists
 
   private
