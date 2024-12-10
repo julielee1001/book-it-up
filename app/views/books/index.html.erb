@@ -1,5 +1,5 @@
 <h1>All Books Added By the Community</h1>
-
+<hr>
 <% if @books.present? %>
   <ul>
       <% @books.each do |book| %>
@@ -12,10 +12,9 @@
           <br>
           <strong>Title:</strong> <%= book.title %><br>
           <strong>Author:</strong> <%= book.author %><br>
-          <strong>Description:</strong> <%= book.description %><br>
           <br>
-          <%= link_to 'View Reviews', book_reviews_path(book), class:"btn btn-warning" %> 
-          <%= link_to 'Add a Review', new_book_review_path(book), class:"btn btn-warning" %>
+          <%= link_to 'View Reviews', book_reviews_path(book), class:"btn btn-primary btn-sm" %> 
+          <%= link_to 'Add a Review', new_book_review_path(book), class:"btn btn-primary btn-sm" %>
 
           <br><br>
 

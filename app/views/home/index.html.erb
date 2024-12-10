@@ -1,57 +1,59 @@
+<h1 class='main-header'>📚 Book It Up! 📚 </h1>
+<br>
+<br>
+
 <div class='user-status'>
     <% if user_signed_in? %>
         <p>Welcome back, <strong><%= current_user.first_name %>!</strong></p>
         <p>You are logged in as <strong><%= current_user.username %></strong></p>
+    <% else %> 
+        <p class="mb-0">Welcome! Please <%= link_to "sign up" , new_user_registration_path %> or
+        <%= link_to "sign in" , new_user_session_path%> to get started! </p>
     <% end %>
 </div>
 
+<br>
+
+<img src="https://miro.medium.com/v2/resize:fit:1200/1*6Jp3vJWe7VFlFHZ9WhSJng.jpeg", class="home-photo">
+<br>
+<hr>
+
+<figure class="text-center">
+    <blockquote class="blockquote">
+        <% if user_signed_in? %>
+            <h2 class="text-body-secondary">What to do, what to do~ </h2>
+            <p class="mb-0"> Check out <%= link_to "My Lists", lists_path %> or the <%= link_to "Book Catalog", books_path %>! </p>
+            <p class="mb-0"> <%= link_to "Search", new_book_path %> for books and <%= link_to "Create New Lists", new_list_path %> to share with family and friends!</p>
+        <% else %>
+            <p>Have you <%= link_to "signed in", new_user_session_path%> yet?</p>
+        <% end %>
+    </blockquote>
+</figure>
 
 
-    <h1 class='main-header'>📚 Book It Up! 📚 </h1>
-
-    <br>
-
-    <img src="https://miro.medium.com/v2/resize:fit:1200/1*6Jp3vJWe7VFlFHZ9WhSJng.jpeg", class="home-photo">
-    <br>
-    <hr>
-
-    <figure class="text-center">
-        <blockquote class="blockquote">
-            <% if user_signed_in? %>
-                <h2 class="text-body-secondary">What to do, what to do~ </h2>
-                <p class="mb-0"> Check out <%= link_to "My Lists", lists_path %> or the <%= link_to "Book Catalog", books_path %>! </p>
-                <p class="mb-0"> <%= link_to "Search", new_book_path %> for books and <%= link_to "Create New Lists", new_list_path %> to share with family and friends!</p>
-            <% else %>
-                <p class="mb-0">Welcome! Please <%= link_to "sign up" , new_user_registration_path %> or
-                <%= link_to "sign in" , new_user_session_path%> to get started! </p>
-            <% end %>
-        </blockquote>
-    </figure>
-
-    
 <hr>
 <br>
 
-    <h2>About</h2>
+<h2>About</h2>
+<br>
+<p> Welcome to "Book It Up!" Here you can create and organize book lists to share for all kinds of purposes! </p>
     <br>
-    <p> Welcome to "Book It Up!" Here you can create and organize book lists for all kinds of purposes!  </p>
-        <br>
 
-        <p>First, navigate to the the "My List" page to view your lists. You'll see that they're are two default lists, Favorites and WIshlist.
-        Try creating your own personal lists!</p>
-        <br>
+    <p>First, navigate to the the "My List" page to view your lists. You'll see that they're are two default lists, Favorites and WIshlist.
+    Try creating your own personal lists!</p>
+    <br>
 
-        <p>Then head over to the search and begin searching for a book. Upon clicking a book, you have the option to save it.</p>
-        <br>
+    <p>Then head over to the search and begin searching for a book. Upon clicking a book, you have the option to save it.</p>
+    <br>
 
-        <p>Once you save a book onto the book catalog, you will be able to add it to a list. </p>
-        <br>
+    <p>Once you save a book onto the book catalog, you will be able to add it to a list. </p>
+    <br>
 
-        <p>Upon viewing the catalog, you will see all the books saved by all users.</p>
-        <br>
+    <p>Upon viewing the catalog, you will see all the books saved by all users.</p>
+    <br>
 
-        <p>You also have the option to leave reviews on books, as well as edit and delete them!</p>
-        <br>
+    <p>You also have the option to leave reviews on books, as well as edit and delete them!</p>
+    <br>
 
-        <p>Try booking it up!</p>
+    <p>Try booking it up!</p>
 
