@@ -2,6 +2,7 @@ class List < ApplicationRecord
   belongs_to :user
   has_many :book_lists, dependent: :destroy
   has_many :books, through: :book_lists
+  has_one_attached :picture
   
   enum status: { default: 0, personal: 1 }
   

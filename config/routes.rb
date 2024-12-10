@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :lists do
     member do
       delete 'remove_book_from_list/:book_id', to: 'lists#remove_book_from_list', as: 'remove_book_from_list'
+      delete :purge_picture
     end
   end
 

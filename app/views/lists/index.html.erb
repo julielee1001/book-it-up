@@ -1,18 +1,21 @@
 <h1> <%= current_user.first_name %>'s Lists</h1>
 
-<ul>
-    <% if current_user.lists.present? %>
-        <% current_user.lists.each do |list| %>
-            <% if list.status == 'default' %>
-                <li><%= link_to list.name, list_path(list) %> (default)</li>
-            <% else %>
-                <li><%= link_to list.name, list_path(list) %> (personal)</li>
-            <% end %>
-        <% end %>
+
+<% if current_user.lists.present? %>
+    <% current_user.lists.each do |list| %>
+        <% if list.status == 'default' %>
+            <%= link_to list.name, list_path(list) %> (default)
+            <%= image_tag list.picture if list.picture.attached? %>
+            <hr>
         <% else %>
-            <p>No Lists Found</p>
-    <%end%>
-</ul>
+            <%= link_to list.name, list_path(list) %> (personal)
+            <%= image_tag list.picture, width:"200px" if list.picture.attached? %>
+            <hr>
+        <% end %>
+    <% end %>
+    <% else %>
+        <p>No Lists Found</p>
+<%end%>
 <br>
 
 

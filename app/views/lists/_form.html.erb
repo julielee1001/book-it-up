@@ -17,6 +17,11 @@
             <% end %>
         </div>
 
+        <div>
+            <%= form.label :picture, "Add a cover photo!" %> <br>
+            <%= form.file_field :picture %>
+        </div>
+
             <%= form.submit "Submit", :class=> 'btn btn-primary' %>
     <% end %>
 <% else %>    
