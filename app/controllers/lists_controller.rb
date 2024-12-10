@@ -55,14 +55,20 @@ class ListsController < ApplicationController
   
       if @book_list
         @book_list.destroy
-        redirect_to @list, notice: "Book removed from list."
+        redirect_to @list, notice: "Book removed from list!"
       else
-        redirect_to @list, alert: "This book is not associated with the list."
+        redirect_to @list, alert: "This book is not associated with the list!"
       end
+    end
+
+    def purge_picture 
+      @list = List.find(params[:id])
+      @list.picture.purge
+      redirect_to list_path(@list), notice: "Picture Deleted Successfully!"
     end
 
   private
     def list_params
-        params.require(:list).permit(:name, :description, :id)
+        params.require(:list).permit(:name, :description, :id, :picture)
     end
 end

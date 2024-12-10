@@ -1,4 +1,12 @@
+<% if @list.picture.attached? %>
+    <%= image_tag @list.picture, width: "500px" %>
+    <br>
+    <br>
+    <%= button_to "Remove Picture", purge_picture_list_path(@list), method: :delete, data: 
+    { confirm: "Are you sure you want to remove the picture?" }, class: "btn btn-danger btn-sm" %>
+<% end %>
 <h1> <%= @list.name %></h1>
+<br>
 
 <p> <%= @list.description %> </p>
 <hr>
