@@ -13,7 +13,7 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
-  end 
+  end
 
   def create
     @list = current_user.lists.new(list_params)
@@ -28,11 +28,11 @@ class ListsController < ApplicationController
 
     def edit
       @list = current_user.lists.find(params[:id])
-    end 
+    end
 
     def update
       @list = current_user.lists.find(params[:id])
-      
+
       if @list.update(list_params)
           redirect_to @list
       else
@@ -52,7 +52,7 @@ class ListsController < ApplicationController
       @book = Book.find(params[:book_id])
 
       @book_list = BookList.find_by(list_id: @list.id, book_id: @book.id)
-  
+
       if @book_list
         @book_list.destroy
         redirect_to @list, notice: "Book removed from list!"
@@ -61,7 +61,7 @@ class ListsController < ApplicationController
       end
     end
 
-    def purge_picture 
+    def purge_picture
       @list = List.find(params[:id])
       @list.picture.purge
       redirect_to list_path(@list), notice: "Picture Deleted Successfully!"
