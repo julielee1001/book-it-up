@@ -1,24 +1,25 @@
-# README
+# Book It Up
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### About the App
 
-Things you may want to cover:
+The purpose of this app is for people to be able to organize their favorite books in lists from a catalog of books curated by all users. Users can search for books to add them onto the books catalog. They can also add reviews to books and customize their lists with an image and description.
 
-* Ruby version
 
-* System dependencies
+### Installation and Set Up
 
-* Configuration
+To install the program, run the following command in your terminal:
 
-* Database creation
+```
+git clone https://github.com/julielee1001/book-it-up.git
+```
+Once installed, open to its directory:
 
-* Database initialization
+```
+cd book-it-up
+```
+Then run:
+```
+bundle install
+```
+Then create a google books api key and place it in an .env file as GOOGLE_BOOKS_API_KEY.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

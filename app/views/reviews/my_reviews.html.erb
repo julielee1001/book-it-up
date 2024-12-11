@@ -4,8 +4,13 @@
 <% if @reviews.any? %>
     <% @reviews.each do |review| %>
         <% if review.user_id === current_user.id %>
-            <p><strong>Review for <%= review.book.title %>:</strong> <%= review.content %></p>
-            <%= link_to 'View Review Details', book_review_path(review.book, review), class:"btn btn-primary btn-sm" %>
+            <img src='<%= review.book.cover_url %>'>
+            <p>Review for <strong><%= review.book.title %>:</strong></p>
+            <br>
+            <%= review.content %></p>
+            <%= link_to 'View My Review Details', book_review_path(review.book, review), class:"btn btn-primary btn-sm" %>
+            <br><br>
+            <%= link_to 'View All Reviews', book_reviews_path(review.book), class:"btn btn-primary btn-sm" %> 
             <hr>
         <% end %>
     <% end %>

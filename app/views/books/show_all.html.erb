@@ -10,7 +10,7 @@
 <br><br>
 
 <%= form_with url: add_to_list_book_path(@book), method: :post, local: true do %>
-<%= label_tag :list_id, "Select List:" %>
+<%= label_tag :list_id, "Select a List to Add To:" %>
 <%= select_tag :list_id, options_from_collection_for_select(@lists, :id, :name), class:"form-select", id:"exampleSelect1", 
 prompt: "Select a list" %>
 <br>
