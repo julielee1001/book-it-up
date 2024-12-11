@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   get "home/index"
-  
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -14,24 +14,23 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  
+
   root "home#index"
 
   resources :lists do
     member do
-      delete 'remove_book_from_list/:book_id', to: 'lists#remove_book_from_list', as: 'remove_book_from_list'
+      delete "remove_book_from_list/:book_id", to: "lists#remove_book_from_list", as: "remove_book_from_list"
       delete :purge_picture
     end
   end
 
   resources :books do
-    post 'add_to_list', on: :member
+    post "add_to_list", on: :member
     resources :reviews
     member do
-      get 'show_all', to: 'books#show_all'
+      get "show_all", to: "books#show_all"
     end
   end
 
-  get 'reviews/my_reviews', to: 'reviews#my_reviews', as: 'reviews_my_reviews'
-
+  get "reviews/my_reviews", to: "reviews#my_reviews", as: "reviews_my_reviews"
 end

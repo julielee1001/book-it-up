@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -7,7 +6,7 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
   validates :username, presence: true, uniqueness: true
-  
+
   has_many :reviews
   has_many :lists
 
@@ -18,5 +17,4 @@ class User < ApplicationRecord
     lists.create(name: "Favorites", status: :default)
     lists.create(name: "Wishlist", status: :default)
   end
-
 end

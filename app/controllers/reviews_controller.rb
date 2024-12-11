@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
     before_action :authenticate_user!
-    before_action :authorize_review_owner, only: [:edit, :update, :destroy]
+    before_action :authorize_review_owner, only: [ :edit, :update, :destroy ]
 
     def index
         @book = Book.find_by(id: params[:book_id])
@@ -15,10 +15,10 @@ class ReviewsController < ApplicationController
         end
     end
 
-    def show 
+    def show
         @book = Book.find_by(id: params[:book_id])
         @review = @book.reviews.find(params[:id])
-    end 
+    end
 
     def new
       @book = Book.find_by(id: params[:book_id])
@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
         @review = Review.new
       end
     end
-  
+
     def create
         @book = Book.find_by(id: params[:book_id])
         if @book.nil?
@@ -36,26 +36,26 @@ class ReviewsController < ApplicationController
         else
           @review = @book.reviews.build(review_params)
           @review.user = current_user
-    
+
           if @review.save
-            redirect_to book_reviews_path(@book), notice: 'Review added successfully.'
+            redirect_to book_reviews_path(@book), notice: "Review added successfully."
           else
             render :new, status: :unprocessable_entity
           end
         end
       end
-  
-    def edit 
+
+    def edit
         @book = Book.find(params[:book_id])
         @review = @book.reviews.find(params[:id])
     end
 
-    def update 
+    def update
         @book = Book.find(params[:book_id])
         @review = @book.reviews.find(params[:id])
 
         if @review.update(review_params)
-            redirect_to book_reviews_path(@book), notice: 'Review successfully updated.'
+            redirect_to book_reviews_path(@book), notice: "Review successfully updated."
         else
             render :edit, status: :unprocessable_entity
         end
@@ -65,10 +65,10 @@ class ReviewsController < ApplicationController
         @book = Book.find(params[:book_id])
         @review = @book.reviews.find(params[:id])
         @review.destroy
-        
-        redirect_to book_reviews_path(@book), notice: 'Review deleted successfully.', status: :see_other
-    end 
-    
+
+        redirect_to book_reviews_path(@book), notice: "Review deleted successfully.", status: :see_other
+    end
+
     def my_reviews
         @reviews = current_user.reviews
         @reviews = Review.order(created_at: :desc)
@@ -83,9 +83,8 @@ class ReviewsController < ApplicationController
     end
 
     private
-  
+
     def review_params
       params.require(:review).permit(:content, :id)
     end
-  end
-  
+end

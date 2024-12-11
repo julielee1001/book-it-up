@@ -6,7 +6,7 @@ class BooksController < ApplicationController
   end
 
   def new
-    require 'httparty'
+    require "httparty"
 
     if params[:search].present?
 
@@ -16,10 +16,10 @@ class BooksController < ApplicationController
 
       if response.success?
 
-        @results = response.parsed_response['items'] || []
+        @results = response.parsed_response["items"] || []
         flash[:message] = "No books found" if @results.empty?
 
-        else
+      else
         flash[:message] = "There was a problem with the Google Books API."
         @results = []
       end
@@ -32,7 +32,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.find_or_initialize_by(google_id: params[:google_id])
-  
+
     if @book.new_record?
       @book.assign_attributes(
         title: params[:title],
@@ -41,17 +41,17 @@ class BooksController < ApplicationController
         cover_url: params[:cover_url]
       )
     end
-  
+
     if @book.save
       redirect_to books_path, notice: "Book successfully saved!"
     else
       redirect_to books_path, alert: "Book could not be saved."
     end
-  end 
-  
+  end
+
   def show
     @book = Book.find_by(google_id: params[:id])
-  
+
     if @book.nil?
       @book = {
         google_id: params[:id],
@@ -63,7 +63,7 @@ class BooksController < ApplicationController
     end
   end
 
-  def show_all 
+  def show_all
     @book = Book.find(params[:id])
     @lists = current_user.lists
   end
@@ -71,19 +71,19 @@ class BooksController < ApplicationController
   def add_to_list
     @book = Book.find(params[:id])
     @list = List.find(params[:list_id])
-  
+
     if @book.lists.include?(@list)
-      redirect_to books_path, notice: 'Book is already in this list.'
+      redirect_to books_path, notice: "Book is already in this list."
     else
       @book.lists << @list
-      redirect_to books_path, notice: 'Book added to the list.'
+      redirect_to books_path, notice: "Book added to the list."
     end
   end
 
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-    redirect_to books_path, notice: 'Book successfully deleted.'
+    redirect_to books_path, notice: "Book successfully deleted."
   end
 
   private
@@ -91,5 +91,4 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:author, :title, :description, :cover_url)
   end
-
 end
