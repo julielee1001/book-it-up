@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   
   has_many :reviews
-  has_many :lists
+  has_many :lists, dependent: :destroy
 
   after_create :create_default_lists
 
