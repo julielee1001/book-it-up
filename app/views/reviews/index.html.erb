@@ -5,8 +5,12 @@
 <br>
 <% if @book.reviews.present? %>
   <% @book.reviews.each do |review| %>
+    <div class="review-body">
     <p>Review by <strong><%= review.user.username %></strong>:</p>
-    <%= review.content %></p>
+    <br>
+      <%= review.content %></p>
+    </div>
+    <br>
     <%= link_to 'View Review Details', book_review_path(review.book, review), class:"btn btn-primary" %>
     <hr>
   <% end %>

@@ -1,9 +1,15 @@
 <h1>Review for <%= @book.title %></h1>
 
 <img src="<%= @book.cover_url %>">
-
-<p>Review by <strong> <%= @review.user.username %>:</strong> <%= @review.content %></p>
-
+<br>
+<br>
+<div class="review-body">
+    <p>Review by <strong> <%= @review.user.username %>:</strong> 
+    <br>
+    <br>
+    <%= @review.content %></p>  
+</div>
+<br><br>
 <% if current_user.id == @review.user.id %>
     <%= link_to "Edit Review", edit_book_review_path(@book, @review), class:"btn btn-primary" %>
     <br>
@@ -17,5 +23,6 @@
 
 <hr>
 <br>
+<%= link_to 'Back to Book Reviews', book_reviews_path(@book), class:"btn btn-primary" %>
 <%= link_to 'Back to All My Reviews', reviews_my_reviews_path, class:"btn btn-primary" %>
 <%= link_to 'Back to Book Catalog', books_path(@book), class:"btn btn-primary" %>

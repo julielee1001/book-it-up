@@ -1,17 +1,21 @@
-<%= form_with model: [@book, @review], local: true do |form| %>
-    <div>
-      <%= form.label :content, 'Your Review:' %>
-      <br>
-      <br>
-      <%= form.text_area :content %>
-      
-    </div>
-    <br>
-    <br>
-    <div>
-      <%= form.submit 'Submit Review' %>
-    </div>
+<div class="review-body">
+    <%= form_with model: [@book, @review], local: true do |form| %>
+        <div>
+        <%= form.label :content, 'Your Review:' %>
+        <br>
+        <br>
+        <%= form.text_area :content %>
+        
+        </div>
+        <br>
+        <br>
+        <div>
+        <%= form.submit 'Submit Review', class:"btn btn-primary" %>
+        </div>
+</div> 
   <% end %>
       <br>
+      <hr>
+<%= link_to 'Back to Book Reviews', book_reviews_path(@book), class:"btn btn-primary" %>
 <%= link_to 'Back to All My Reviews', reviews_my_reviews_path, class:"btn btn-primary" %>
 <%= link_to 'Back to Book Catalog', books_path, class:"btn btn-primary" %>

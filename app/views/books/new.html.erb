@@ -1,7 +1,8 @@
 <h1> Search For a Book 🔎</h1>
 <p>Search for a book and then save it onto the catalog to add it onto a list!</p>
 
-<%= form_with url: new_book_path, method: :get, local: true do %>
+<div class="form-container">
+  <%= form_with url: new_book_path, method: :get, local: true do %>
     <div>
       <%= label_tag :search, "Search By Title or Author:" %>
       <%= text_field_tag :search, params[:search], class:"form-control" %>
@@ -11,7 +12,7 @@
       <%= submit_tag "Search", class:"btn btn-primary" %>
     </div>
   <% end %>
-
+</div>
   <br>
   <br>
 

@@ -3,7 +3,6 @@
 <% if @books.present? %>
   <ul>
       <% @books.each do |book| %>
-
           <% if book.cover_url.present? %>
             <img src="<%= book.cover_url %>" alt="<%= book.title %> Cover" width="150px">
           <% else %>
