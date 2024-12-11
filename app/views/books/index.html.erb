@@ -21,7 +21,7 @@
           <%= link_to "View Book Details", show_all_book_path(book), class:"btn btn-primary" %>
           <br>
           <br>
-        <%= link_to "Delete Book Off Catalog", book_path(book), class:"btn btn-danger btn-sm", method: :delete, data: {
+        <%= button_to "Delete Book Off Catalog", book_path(book), class:"btn btn-danger btn-sm", method: :delete, data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                     } %>

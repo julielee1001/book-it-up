@@ -25,7 +25,7 @@
             <p class="mb-0"> Check out <%= link_to "My Lists", lists_path %> or the <%= link_to "Book Catalog", books_path %>! </p>
             <p class="mb-0"> <%= link_to "Search", new_book_path %> for books and <%= link_to "Create New Lists", new_list_path %> to share with family and friends!</p>
         <% else %>
-            <p>Have you <%= link_to "signed in", new_user_session_path%> yet?</p>
+            <p>Don't forget to <%= link_to "sign in", new_user_session_path%>!</p>
         <% end %>
     </blockquote>
 </figure>
@@ -36,11 +36,16 @@
 
 <h2>About</h2>
 <br>
-<p> Welcome to "Book It Up!" Here you can create and organize book lists to share for all kinds of purposes! </p>
+<p> Welcome to "Book It Up!" Here you can create and organize book lists to share with friends and family! </p>
     <br>
 
-    <p>First, navigate to the the "My List" page to view your lists. You'll see that they're are two default lists, Favorites and WIshlist.
-    Try creating your own personal lists!</p>
+    <p>First, navigate to the the "My Lists" page to view your lists.</p> 
+    <br>
+
+    <p>You'll see that there are already two lists, Favorites and Wishlist.</p>
+    <br>
+
+    <p>Try creating your own personal lists!</p>
     <br>
 
     <p>Then head over to the search and begin searching for a book. Upon clicking a book, you have the option to save it.</p>
@@ -52,7 +57,7 @@
     <p>Upon viewing the catalog, you will see all the books saved by all users.</p>
     <br>
 
-    <p>You also have the option to leave reviews on books, as well as edit and delete them!</p>
+    <p>You also have the option to leave reviews on books!</p>
     <br>
 
     <p>Try booking it up!</p>

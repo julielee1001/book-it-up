@@ -44,7 +44,7 @@ class ListsController < ApplicationController
       @list = List.find(params[:id])
       @list.destroy
 
-      redirect_to lists_path, status: :see_other
+      redirect_to lists_path, status: :see_other, notice: "List successfully deleted!"
     end
 
     def remove_book_from_list
