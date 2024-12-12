@@ -1,11 +1,19 @@
-.list-container, .book-container {
+.list-container, .book-container, .review-container, .sm-review-container {
     background-color: white;
     padding:15px;
     border-radius: 15px;
     width: 60%;
     margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.list-container:hover {
-    background-color: rgb(255, 250, 230);
+.list-container:hover, .card:hover{
+    box-shadow: 0 4px 8px 0 rgba(43, 92, 255, 0.807), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transform: translate(0, -10px);
+}
+
+.card {
+    width:50% !important;
+    margin: auto !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

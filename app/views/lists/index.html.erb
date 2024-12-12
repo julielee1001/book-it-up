@@ -1,8 +1,8 @@
 <h1> <%= current_user.first_name %>'s Lists 🔖</h1>
-
+<hr>
     <% if current_user.lists.present? %>
         <% current_user.lists.each do |list| %>
-                <div class="list-container">
+                <div class="card">
                     <%= image_tag list.picture, width:"200px" if list.picture.attached? %>
                     <br>
                     <%= link_to list.name, list_path(list) %>

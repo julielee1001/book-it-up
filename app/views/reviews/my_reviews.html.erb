@@ -4,11 +4,13 @@
 <% if @reviews.any? %>
     <% @reviews.each do |review| %>
         <% if review.user_id === current_user.id %>
+        <div class="review-container">
+        <br>
             <img src='<%= review.book.cover_url %>'>
             <br>
             <br>
             <div class="review-body">
-                <p>Review for <strong><%= review.book.title %>:</strong></p>
+                <p>My review for <strong><%= review.book.title %>:</strong></p>
                 <br>
                 <p><%= review.content %></p>
             </div>
@@ -16,6 +18,8 @@
             <%= link_to 'View My Review Details', book_review_path(review.book, review), class:"btn btn-primary btn-sm" %>
             <br><br>
             <%= link_to 'View All Reviews', book_reviews_path(review.book), class:"btn btn-primary btn-sm" %> 
+            <br>
+            </div>
             <hr>
         <% end %>
     <% end %>

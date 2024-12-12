@@ -17,13 +17,39 @@
 @import "devise";
 @import "reviews";
 @import "lists";
+@import "books";
 
 .container {
     text-align: center !important;
-    background-color: rgb(255, 241, 236);
+    background-color: rgb(248, 215, 188);
     padding:20px;
+    opacity: 95%;
 }
 
 body {
-    background-color: white;
+    background-image: url("https://ebookfriendly.com/wp-content/uploads/2013/10/Tablet-book-wallpapers-Google-library.jpeg");
+}
+
+img {
+    margin: auto !important;
+    max-width: 100%; 
+    height: auto;
+}
+
+.navbar {
+    background-color: rgb(0, 0, 0) !important;
+}
+
+.btn-primary {
+    background-color: rgb(83, 102, 199);
+    border-color: rgb(115, 129, 198);
+}
+
+.btn-primary:hover {
+    background-color: rgb(43, 66, 178);;
+}
+
+.btn-danger {
+    background-color: rgb(189, 78, 78);
+    border-color: rgb(189, 78, 78);
 }

@@ -9,3 +9,30 @@
     margin: auto;
     text-shadow: 2px 2px rgb(255, 117, 117);
 }
+
+.info-message {
+    background-color: white;
+    border: 1px black;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 75%;
+    margin:auto;
+}
+
+.hero-image {
+background: url("https://miro.medium.com/v2/resize:fit:1200/1*6Jp3vJWe7VFlFHZ9WhSJng.jpeg") no-repeat center; 
+background-size: cover;
+height: 500px;
+position: relative;
+}
+
+.hero-text {
+text-align: center;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: white;
+text-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+font-weight: bold;
+}

@@ -14,17 +14,18 @@
 
 <% if @list.books.any? %>
     <% @list.books.each do |book| %>
-        <strong>Title:</strong> <%= book.title %><br>
-        <strong>Author:</strong> <%= book.author %><br>
-        <img src="<%= book.cover_url %>", width="100px" <br>
-        <br><br>
+        <div class="book-container">
+            <strong>Title:</strong> <%= book.title %><br>
+            <strong>Author:</strong> <%= book.author %><br>
+            <img src="<%= book.cover_url %>", width="100px" <br>
+            <br><br>
 
-        <%= link_to "View Book Details", show_all_book_path(book), class:"btn btn-primary" %>
-        <br>
-        <br>
-        <%= button_to "Remove from List", remove_book_from_list_list_path(@list, book), class:'btn btn-danger', method: :delete, 
-                data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this book from the list?" } %>
-
+            <%= link_to "View Book Details", show_all_book_path(book), class:"btn btn-primary" %>
+            <br>
+            <br>
+            <%= button_to "Remove from List", remove_book_from_list_list_path(@list, book), class:'btn btn-danger', method: :delete, 
+                    data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this book from the list?" } %>
+        </div>
         <br>
       <hr>
     <% end %>
