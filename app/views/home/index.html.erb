@@ -13,30 +13,34 @@
 </div>
 
 <br>
-
-<img src="https://miro.medium.com/v2/resize:fit:1200/1*6Jp3vJWe7VFlFHZ9WhSJng.jpeg", class="home-photo">
+<div class="hero-image">
+    <div class="hero-text">
+        <h2>Keep track of your reads with Book It Up!</h2>
+    </div>
+</div>
 <br>
 <hr>
 
-<figure class="text-center">
-    <blockquote class="blockquote">
-        <% if user_signed_in? %>
-            <h2 class="text-body-secondary">What to do, what to do~ </h2>
-            <p class="mb-0"> Check out <%= link_to "My Lists", lists_path %> or the <%= link_to "Book Catalog", books_path %>! </p>
-            <p class="mb-0"> <%= link_to "Search", new_book_path %> for books and <%= link_to "Create New Lists", new_list_path %> to share with family and friends!</p>
-        <% else %>
-            <p>Don't forget to <%= link_to "sign in", new_user_session_path%>!</p>
-        <% end %>
-    </blockquote>
-</figure>
-
+<div class="info-message">
+    <figure class="text-center">
+        <blockquote class="blockquote">
+            <% if user_signed_in? %>
+                <h2 class="text-body-secondary">What to do, what to do~ </h2>
+                <p class="mb-0"> Check out <%= link_to "My Lists", lists_path %> or the <%= link_to "Book Catalog", books_path %>! </p>
+                <p class="mb-0"> <%= link_to "Search", new_book_path %> for books and <%= link_to "Create New Lists", new_list_path %>!</p>
+            <% else %>
+                <p>Don't forget to <%= link_to "sign in", new_user_session_path%>!</p>
+            <% end %>
+        </blockquote>
+    </figure>
+</div>
 
 <hr>
 <br>
-
-<h2>About</h2>
-<br>
-<p> Welcome to "Book It Up!" Here you can create and organize book lists to share with friends and family! </p>
+<div class="info-message">
+    <h2>About</h2>
+    <br>
+    <p> Welcome to "Book It Up!" Here you can create and organize book lists to share! </p>
     <br>
 
     <p>First, navigate to the the "My Lists" page to view your lists.</p> 
@@ -61,4 +65,5 @@
     <br>
 
     <p>Try booking it up!</p>
+</div>
 

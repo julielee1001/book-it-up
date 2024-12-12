@@ -1,0 +1,11 @@
+.book-container {
+    background-color: white;
+    padding: 10px;
+    border-radius: 15px;
+    border: 5px black;
+}
+
+.book-container:hover, .review-container:hover {
+    transform: translate(0, -10px);
+    box-shadow: 0 4px 8px 0 rgba(43, 92, 255, 0.807), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

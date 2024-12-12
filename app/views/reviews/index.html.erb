@@ -5,13 +5,19 @@
 <br>
 <% if @book.reviews.present? %>
   <% @book.reviews.each do |review| %>
-    <div class="review-body">
-    <p>Review by <strong><%= review.user.username %></strong>:</p>
-    <br>
+    <div class="sm-review-container">
+      <p>
+      Review by <strong><%= review.user.username %></strong> 
+        <% if review.user_id == current_user.id %>
+          (me)
+        <% end %>
+      :</p>
+      <br>
       <%= review.content %></p>
+      <br>
+      <%= link_to 'View Review Details', book_review_path(review.book, review), class:"btn btn-primary" %>
+      <br>
     </div>
-    <br>
-    <%= link_to 'View Review Details', book_review_path(review.book, review), class:"btn btn-primary" %>
     <hr>
   <% end %>
 <% else %>

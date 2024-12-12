@@ -1,3 +1,9 @@
 input#user_remember_me {
     margin: auto;
 }
+
+.form-control {
+    width: 75% !important;
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
