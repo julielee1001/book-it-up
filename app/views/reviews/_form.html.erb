@@ -1,4 +1,7 @@
 <div class="review-body">
+    <br>
+    <img src="<%= @book.cover_url %>">
+    <br>
     <%= form_with model: [@book, @review], local: true do |form| %>
         <div>
         <%= form.label :content, 'Your Review:' %>
