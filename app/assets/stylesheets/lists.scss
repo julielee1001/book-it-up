@@ -1,4 +1,4 @@
-.list-container, .book-container, .review-container, .sm-review-container {
+.list-container, .book-container, .sm-review-container {
     background-color: white;
     padding:15px;
     border-radius: 15px;
@@ -8,7 +8,7 @@
 }
 
 .list-container:hover, .card:hover{
-    box-shadow: 0 4px 8px 0 rgba(43, 92, 255, 0.807), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0px 8px 12px 4px rgba(43, 92, 255, 0.807), 0px 8px 20px 4px rgba(0, 0, 0, 0.19);
     transform: translate(0, -10px);
 }
 

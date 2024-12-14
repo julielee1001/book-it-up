@@ -1,34 +1,37 @@
-<h1>All Books Added By the Community</h1>
+<h1>All Books Added By the Community 📖</h1>
 <hr>
 <% if @books.present? %>
-  <ul>
+    <div class="grid-container">
       <% @books.each do |book| %>
-        <div class="book-container">
-          <% if book.cover_url.present? %>
-            <img src="<%= book.cover_url %>" alt="<%= book.title %> Cover" width="150px">
-          <% else %>
-            <p>No cover image available.</p>
-          <% end %>
-          <br>
-          <strong>Title:</strong> <%= book.title %><br>
-          <strong>Author:</strong> <%= book.author %><br>
-          <br>
-          <%= link_to 'View Reviews', book_reviews_path(book), class:"btn btn-primary btn-sm" %> 
-          <%= link_to 'Add a Review', new_book_review_path(book), class:"btn btn-primary btn-sm" %>
-          <br><br>
+          <div class="col">
+            <div class="book-container">
+              <% if book.cover_url.present? %>
+                <img src="<%= book.cover_url %>" alt="<%= book.title %> Cover" width="150px">
+              <% else %>
+                <p>No cover image available.</p>
+              <% end %>
+              <br>
+              <strong>Title:</strong> <%= book.title %><br>
+              <strong>Author:</strong> <%= book.author %><br>
+            </div>
+            <br>
+              <%= link_to 'View Reviews', book_reviews_path(book), class:"btn btn-primary btn-sm" %> 
+              <%= link_to 'Add a Review', new_book_review_path(book), class:"btn btn-primary btn-sm" %>
+              <br><br>
 
-          <%= link_to "View Book Details", show_all_book_path(book), class:"btn btn-primary" %>
-          <br>
-          <br>
-          <%= button_to "Delete Book Off Catalog", book_path(book), class:"btn btn-danger btn-sm", method: :delete, data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                    } %>
-        </div>
-        <hr>
-    
-    <% end %>
-  </ul>
+              <%= link_to "View Book Details", show_all_book_path(book), class:"btn btn-primary" %>
+              <br>
+              <br>
+              <%= button_to "Delete Book Off Catalog", book_path(book), class:"btn btn-danger btn-sm", method: :delete, data: {
+              turbo_method: :delete,
+              turbo_confirm: "Are you sure?"
+              } %>
+          </div>
+      <% end %>
+    </div>
+    <hr>
 <% else %>
   <p>No saved books found.</p>
 <% end %>
+
+<%= link_to "Add More Books!", new_book_path, class:"btn btn-primary btn-lg" %>
