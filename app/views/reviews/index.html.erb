@@ -2,7 +2,6 @@
 
 <img src='<%= @book.cover_url %>'>
 <hr>
-<br>
 <% if @book.reviews.present? %>
   <% @book.reviews.each do |review| %>
     <div class="sm-review-container">
