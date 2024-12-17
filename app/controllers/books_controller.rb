@@ -73,17 +73,17 @@ class BooksController < ApplicationController
     @list = List.find(params[:list_id])
 
     if @book.lists.include?(@list)
-      redirect_to books_path, notice: "Book is already in this list."
+      redirect_to books_path, notice: "Book is already in this list!"
     else
       @book.lists << @list
-      redirect_to books_path, notice: "Book added to the list."
+      redirect_to books_path, notice: "Book added to the list!"
     end
   end
 
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-    redirect_to books_path, notice: "Book successfully deleted."
+    redirect_to books_path, notice: "Book successfully deleted!"
   end
 
   private

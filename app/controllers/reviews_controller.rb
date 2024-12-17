@@ -38,7 +38,7 @@ class ReviewsController < ApplicationController
           @review.user = current_user
 
           if @review.save
-            redirect_to book_reviews_path(@book), notice: "Review added successfully."
+            redirect_to book_reviews_path(@book), notice: "Review added successfully!"
           else
             render :new, status: :unprocessable_entity
           end
@@ -55,7 +55,7 @@ class ReviewsController < ApplicationController
         @review = @book.reviews.find(params[:id])
 
         if @review.update(review_params)
-            redirect_to book_reviews_path(@book), notice: "Review successfully updated."
+            redirect_to book_reviews_path(@book), notice: "Review successfully updated!"
         else
             render :edit, status: :unprocessable_entity
         end
@@ -66,7 +66,7 @@ class ReviewsController < ApplicationController
         @review = @book.reviews.find(params[:id])
         @review.destroy
 
-        redirect_to book_reviews_path(@book), notice: "Review deleted successfully.", status: :see_other
+        redirect_to book_reviews_path(@book), notice: "Review deleted successfully!", status: :see_other
     end
 
     def my_reviews
@@ -78,7 +78,7 @@ class ReviewsController < ApplicationController
         @book = Book.find(params[:book_id])
         @review = @book.reviews.find(params[:id])
         unless @review.user == current_user
-          redirect_to book_reviews_path(@book), notice: "You are not authorized to perform this action."
+          redirect_to book_reviews_path(@book), notice: "You are not authorized to perform this action!"
         end
     end
 
