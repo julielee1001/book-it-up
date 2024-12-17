@@ -13,13 +13,13 @@
               <br>
               <strong>Title:</strong> <%= book.title %><br>
               <strong>Author:</strong> <%= book.author %><br>
+              <br>
+              <%= link_to "View Book Details", show_all_book_path(book), class:"btn btn-primary" %>
+              <br>
             </div>
             <br>
               <%= link_to 'View Reviews', book_reviews_path(book), class:"btn btn-primary btn-sm" %> 
               <%= link_to 'Add a Review', new_book_review_path(book), class:"btn btn-primary btn-sm" %>
-              <br><br>
-
-              <%= link_to "View Book Details", show_all_book_path(book), class:"btn btn-primary" %>
               <br>
               <br>
               <%= button_to "Delete Book Off Catalog", book_path(book), class:"btn btn-danger btn-sm", method: :delete, data: {
