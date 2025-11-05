@@ -7,7 +7,6 @@
 .main-header {
     width:50%;
     margin: auto;
-    text-shadow: 2px 2px rgb(255, 107, 66);
 }
 
 .info-message {
@@ -18,12 +17,15 @@
     width: 75%;
     margin:auto;
 }
+.footer-text {
+    margin-bottom: 10px;
+}
 
 .hero-image {
     background: url("https://ebookfriendly.com/wp-content/uploads/2013/10/Tablet-book-wallpapers-Google-library.jpeg" ) no-repeat center; 
     background-size: cover;
     height: 500px;
-    position: relative;
+    position: sticky;
     min-height: 500px;
 
     /* Create the parallax scrolling effect */
@@ -31,6 +33,7 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
 
 .hero-text {
     text-align: center;

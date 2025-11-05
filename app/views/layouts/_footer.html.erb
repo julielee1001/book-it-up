@@ -1,0 +1,60 @@
+<!-- Remove the container if you want to extend the Footer to full width. -->
+<div>
+  <!-- Footer -->
+  <footer
+          class="text-center text-lg-start text-white"
+          style="background-color: black"
+          >
+    <!-- Grid container -->
+    <div class="p-4 pb-0">
+      <!-- Section: Links -->
+      <section class="">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+            <h5>Book It Up</h5>
+            <p>
+                Thanks for visiting! 
+            </p>
+          </div>
+          <!--Grid column-->
+          <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+            <h5>Quick Nav Links</h5>
+
+            <ul class="list-unstyled mb-0">
+              <li>
+                <%= link_to "Search", new_book_path, :class => "nav-link" %>
+              </li>
+              <li>
+                <%= link_to "My Lists", lists_path, :class => "nav-link" %>
+              </li>
+              <li>
+                <%= link_to "Book Catalog", books_path, :class => "nav-link" %>
+              </li>
+              <li>
+                <%= link_to 'My Reviews', reviews_my_reviews_path, :class => "nav-link" %>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+        <!--Grid row-->
+      </section>
+      <hr class="mb-4" />
+
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div
+         class="text-center p-3"
+         style="background-color: rgba(0, 0, 0, 0.2)"
+         >
+      © 2020 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/"
+         >MDBootstrap.com</a
+        >
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+</div>
