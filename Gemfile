@@ -37,7 +37,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # bootstrap and sass engine
-gem "bootstrap", "~> 5.2", ">= 5.2.3"
+gem "bootstrap", "~> 5.3"
 gem "sassc-rails"
 # gem 'bootstrap-sass-extras'
 gem "devise", "~> 4.9"
